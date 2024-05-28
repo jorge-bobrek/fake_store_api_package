@@ -1,39 +1,45 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+# Fake Store
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+Un simple paquete que consume los servicios del [Fake Store API](https://fakestoreapi.com/) para ser usado desde Flutter.
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+## Uso del paquete
 
-## Features
+Para hacer uso del paquete primero hay que agregarlo a las dependencias con el nombre de `fake_store_package`
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+Para consultar los servicios debemos importar la clase Catalog
 ```
+import 'package:fake_store_package/catalog.dart';
+```
+Después se crea una instancia de la clase **Catalog**.
+```
+final catalog = Catalog();
+```
+Con esta instancia podemos llamar a los diferentes casos de uso.
+```
+final product = await catalog.getProduct(7);
+```
+Y procesar la respuesta haciendo uso de *fold*, recibiendo primero el objeto de respuesta del servicio y de segundo el error.
+```
+product.fold(
+  (product) => printProduct(product),
+  (error) => print(error),
+);
+  ```
 
-## Additional information
+Actualmente el proyecto consume los siguientes 3 servicios del API:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+### GetProductsList: 
+Retorna la información de todos los productos disponibles en el API.\
+Se puede acceder a este servicio por medio de `catalog.getProductsList()`.\
+Este método llama a la url: https://fakestoreapi.com/products
+
+### GetProduct: 
+Retorna la información de un producto individual consultándolo por medio del **id** del producto.\
+Se puede acceder a este servicio por medio de `catalog.getProduct(id)` y el servicio responderá con la información del producto solicitado.\
+Este método llama a la url: https://fakestoreapi.com/products/{id}
+
+### GetProductsInCategory: 
+Retorna la información de todos los productos ubicados en la **cateogría** especificada.\
+Se puede acceder a este servicio por medio de `catalog.getProductsInCategory(Category)`, en el cual **Category** es un Enum de categorías, y responderá con un listado de productos de la categoría seleccionada.\
+Este método llama a la url: https://fakestoreapi.com/products/category/{category}
