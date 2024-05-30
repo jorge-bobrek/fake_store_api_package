@@ -27,4 +27,9 @@ class RatingModel extends RatingEntity {
       'count': count,
     };
   }
+  
+  @override
+  String toString() {
+    return 'Rate: ${rate?.toStringAsFixed(1) ?? 'N/A'}, Count: ${count ?? 'N/A'}';
+  }
 }

@@ -1,4 +1,4 @@
-import 'package:example/pages/product_list_page.dart';
+import 'package:example/pages/home_page.dart';
 import 'package:example/providers/product_provider.dart';
 import 'package:fake_store_package/catalog.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.pink,
         ),
-        home: const ProductListPage(),
+        home: const HomePage(),
       ),
     );
   }

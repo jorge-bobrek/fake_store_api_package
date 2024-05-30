@@ -57,4 +57,16 @@ class ProductModel extends ProductEntity {
       "rating": rating?.toJson(),
     };
   }
+  @override
+  String toString() {
+    return '''
+ID: ${id ?? 'N/A'}
+Título: ${title ?? 'N/A'}
+Precio: \$${price?.toStringAsFixed(2) ?? 'N/A'}
+Descripción: ${description ?? 'N/A'}
+Categoría: ${category ?? 'N/A'}
+Imagen: ${image ?? 'N/A'}
+Rating: ${rating?.toString() ?? 'N/A'}
+''';
+  }
 }

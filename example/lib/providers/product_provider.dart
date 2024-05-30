@@ -1,51 +1,44 @@
 import 'package:fake_store_package/catalog.dart';
-import 'package:fake_store_package/domain/entities/product_entity.dart';
 import 'package:fake_store_package/domain/utils/category_enum.dart';
 import 'package:flutter/material.dart';
 
 class ProductProvider with ChangeNotifier {
   final Catalog catalog;
 
-  List<ProductEntity> products = [];
-  ProductEntity? selectedProduct;
-  Category selectedCategory = Category.none;
-  String? errorMessage;
+  String _response = "";
+  String get response => _response;
 
   ProductProvider({required this.catalog});
 
   Future<void> fetchProducts() async {
-    products = [];
     final result = await catalog.getProductsList();
     result.fold(
       (productList) {
-        products = productList;
+        _response = productList.map((p) => p.toString()).join('\n');
         notifyListeners();
       },
       (failure) {
-        errorMessage = 'Error al cargar los productos';
+        _response = "Error: $failure";
         notifyListeners();
       },
     );
   }
 
   Future<void> fetchProduct(int id) async {
-    selectedProduct = null;
     final result = await catalog.getProduct(id);
     result.fold(
       (product) {
-        selectedProduct = product;
+        _response = product.toString();
         notifyListeners();
       },
       (failure) {
-        errorMessage = 'Error al cargar el producto';
+        _response = "Error: $failure";
         notifyListeners();
       },
     );
   }
 
   Future<void> fetchProductsInCategory(Category category) async {
-    products = [];
-    selectedCategory = category;
     notifyListeners();
 
     if (category == Category.none) {
@@ -54,11 +47,11 @@ class ProductProvider with ChangeNotifier {
       final result = await catalog.getProductsInCategory(category);
       result.fold(
         (productList) {
-          products = productList;
+          _response = productList.map((p) => p.toString()).join('\n');
           notifyListeners();
         },
         (failure) {
-          errorMessage = 'Error al cargar los productos en la categoría';
+          _response = "Error: $failure";
           notifyListeners();
         },
       );
