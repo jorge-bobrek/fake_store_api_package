@@ -1,6 +1,5 @@
+import 'package:fake_store_package/catalog.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:example/providers/product_provider.dart';
 import 'package:fake_store_package/domain/utils/category_enum.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,9 +10,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final Catalog catalog = Catalog();
+  String _response = "";
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ProductProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Tienda de Productos'),
@@ -26,20 +26,43 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {
-                    provider.fetchProducts();
+                  onPressed: () async {
+                    final result = await catalog.getProductsList();
+                    setState(() {
+                      _response = result.fold(
+                        (products) => products
+                            .map((product) => product.toString())
+                            .join('\n\n'),
+                        (error) => 'Error: $error',
+                      );
+                    });
                   },
                   child: const Text("Lista de Productos"),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    provider.fetchProduct(10);
+                  onPressed: () async {
+                    final result = await catalog.getProduct(10);
+                    setState(() {
+                      _response = result.fold(
+                        (product) => product.toString(),
+                        (error) => 'Error: $error',
+                      );
+                    });
                   },
                   child: const Text("Producto"),
                 ),
                 ElevatedButton(
-                  onPressed: () {
-                    provider.fetchProductsInCategory(Category.electronics);
+                  onPressed: () async {
+                    final result = await catalog
+                        .getProductsInCategory(Category.electronics);
+                    setState(() {
+                      _response = result.fold(
+                        (products) => products
+                            .map((product) => product.toString())
+                            .join('\n\n'),
+                        (error) => 'Error: $error',
+                      );
+                    });
                   },
                   child: const Text("Productos por Categoría"),
                 ),
@@ -48,7 +71,7 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 20),
             Expanded(
               child: SingleChildScrollView(
-                child: Text(provider.response),
+                child: Text(_response),
               ),
             ),
           ],

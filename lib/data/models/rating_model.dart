@@ -30,6 +30,6 @@ class RatingModel extends RatingEntity {
   
   @override
   String toString() {
-    return 'Rate: ${rate?.toStringAsFixed(1) ?? 'N/A'}, Count: ${count ?? 'N/A'}';
+    return 'Puntaje: ${rate?.toStringAsFixed(1) ?? 'N/A'}, Puntuaciones: ${count ?? 'N/A'}';
   }
 }
