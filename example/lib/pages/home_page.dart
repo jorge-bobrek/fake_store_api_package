@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                /// Obtiene la lista de productos desde la API.
                 ElevatedButton(
                   onPressed: () async {
                     final result = await catalog.getProductsList();
@@ -39,6 +40,7 @@ class _HomePageState extends State<HomePage> {
                   },
                   child: const Text("Lista de Productos"),
                 ),
+                /// Obtiene un producto por su [id] desde la API.
                 ElevatedButton(
                   onPressed: () async {
                     final result = await catalog.getProduct(10);
@@ -51,6 +53,7 @@ class _HomePageState extends State<HomePage> {
                   },
                   child: const Text("Producto"),
                 ),
+                /// Obtiene productos en una categoría específica desde la API.
                 ElevatedButton(
                   onPressed: () async {
                     final result = await catalog
@@ -68,6 +71,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            /// Muestra en un campo de texto la respuesta de los servicios.
             const SizedBox(height: 20),
             Expanded(
               child: SingleChildScrollView(
