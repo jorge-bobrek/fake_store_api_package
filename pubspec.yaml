@@ -1,7 +1,7 @@
 name: fake_store_package
 description: "Paquete con el consumo del Fake Store API en Dart"
 version: 1.0.0
-homepage:
+homepage: https://github.com/jorge-bobrek/fake_store_package
 
 environment:
   sdk: '>=3.3.4 <4.0.0'
