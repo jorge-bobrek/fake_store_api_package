@@ -22,8 +22,10 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            Wrap(
+              spacing: 8.0,
+              runSpacing: 8.0,
+              alignment: WrapAlignment.center,
               children: [
                 /// Obtiene la lista de productos desde la API.
                 ElevatedButton(
@@ -74,8 +76,10 @@ class _HomePageState extends State<HomePage> {
             /// Muestra en un campo de texto la respuesta de los servicios.
             const SizedBox(height: 20),
             Expanded(
-              child: SingleChildScrollView(
-                child: Text(_response),
+              child: Center(
+                child: SingleChildScrollView(
+                  child: Text(_response),
+                ),
               ),
             ),
           ],
