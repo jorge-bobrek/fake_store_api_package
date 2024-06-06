@@ -28,6 +28,7 @@ class RatingModel extends RatingEntity {
     };
   }
   
+  /// Override del método toString que permite mostrar formateada la información del rating.
   @override
   String toString() {
     return 'Puntaje: ${rate?.toStringAsFixed(1) ?? 'N/A'}, Puntuaciones: ${count ?? 'N/A'}';

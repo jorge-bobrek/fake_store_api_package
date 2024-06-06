@@ -7,6 +7,7 @@ enum Category {
 }
 
 extension CategoryExtension on Category {
+  /// Retorna, en formato reconozible para el API, el nombre de la categoría.
   String get name {
     switch (this) {
       case Category.electronics:
@@ -23,6 +24,7 @@ extension CategoryExtension on Category {
     }
   }
 
+  /// Retorna el nombre de la categoría en español.
   String get displayName {
     switch (this) {
       case Category.electronics:

@@ -57,6 +57,8 @@ class ProductModel extends ProductEntity {
       "rating": rating?.toJson(),
     };
   }
+
+  /// Override del método toString que permite mostrar formateada la información del producto.
   @override
   String toString() {
     return '''

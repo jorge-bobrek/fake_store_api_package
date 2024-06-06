@@ -8,8 +8,15 @@ import 'package:dartz/dartz.dart';
 /// [ProductRemoteDataSource] maneja las llamadas a la API remota
 /// para obtener datos de productos.
 class ProductRemoteDataSource {
+  static const _baseUrl = 'https://fakestoreapi.com/products';
+
+  /// Obtiene la lista de productos desde la API.
+  /// 
+  /// Retorna un valor [Future] de tipo [Either] que contiene unos valores a
+  /// la izquierda una lista de tipo [ProductEntity] que contiene la respuesta
+  /// y a la derecha un [String] que contiene el error.
   Future<Either<List<ProductEntity>, String>> getProductsList() async {
-    final url = Uri.parse('https://fakestoreapi.com/products');
+    final url = Uri.parse(_baseUrl);
     return _fetchData(
         url,
         (data) =>
@@ -17,15 +24,25 @@ class ProductRemoteDataSource {
             data.map((x) => ProductModel.fromJson(x))));
   }
 
+  /// Obtiene un producto por su [id] desde la API.
+  /// 
+  /// Retorna un valor [Future] de tipo [Either] que contiene unos valores a
+  /// la izquierda un objeto de tipo [ProductEntity] que contiene la respuesta
+  /// y a la derecha un [String] que contiene el error.
   Future<Either<ProductEntity, String>> getProduct(int id) async {
-    final url = Uri.parse('https://fakestoreapi.com/products/$id');
+    final url = Uri.parse('$_baseUrl/$id');
     return _fetchData(url, (data) => ProductModel.fromJson(data));
   }
 
+  /// Obtiene la lista de productos en una [category] específica desde la API.
+  /// 
+  /// Retorna un valor [Future] de tipo [Either] que contiene unos valores a
+  /// la izquierda una lista de tipo [ProductEntity] que contiene la respuesta
+  /// y a la derecha un [String] que contiene el error.
   Future<Either<List<ProductEntity>, String>> getProductsInCategory(
       Category category) async {
     final url = Uri.parse(
-        'https://fakestoreapi.com/products/category/${category.name}');
+        '$_baseUrl/category/${category.name}');
     return _fetchData(
         url,
         (data) =>

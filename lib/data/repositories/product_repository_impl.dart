@@ -11,16 +11,28 @@ class ProductRepositoryImpl implements IProductRepository {
 
   ProductRepositoryImpl(this.remoteDataSource);
 
+  /// Obtiene la lista de productos desde la API.
+  /// Retorna un valor [Future] de tipo [Either] que contiene unos valores a
+  /// la izquierda una lista de tipo [ProductEntity] que contiene la respuesta
+  /// y a la derecha un [String] que contiene el error.
   @override
   Future<Either<List<ProductEntity>, String>> getProductsList() {
     return remoteDataSource.getProductsList();
   }
 
+  /// Obtiene un producto específico por [id] desde la API.
+  /// Retorna un valor [Future] de tipo [Either] que contiene unos valores a
+  /// la izquierda un objeto de tipo [ProductEntity] que contiene la respuesta
+  /// y a la derecha un [String] que contiene el error.
   @override
   Future<Either<ProductEntity, String>> getProduct(int id) {
     return remoteDataSource.getProduct(id);
   }
 
+  /// Obtiene la lista de productos en una [category] específica desde la API.
+  /// Retorna un valor [Future] de tipo [Either] que contiene unos valores a
+  /// la izquierda una lista de tipo [ProductEntity] que contiene la respuesta
+  /// y a la derecha un [String] que contiene el error.
   @override
   Future<Either<List<ProductEntity>, String>> getProductsInCategory(
       Category category) {
