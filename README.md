@@ -64,12 +64,19 @@ Este método llama a la url: https://fakestoreapi.com/products/category/{categor
 Este modelo es el objeto principal que retorna los diferentes servicios.
 ```dart
 abstract class ProductEntity {
+  ///Id del producto
   final int? id;
+  ///Título del producto
   final String? title;
+  ///Descripción del producto
   final String? description;
+  ///Precio del producto
   final double? price;
+  ///Categoría del producto
   final Category? category;
+  ///URL de la imagen del producto
   final String? image;
+  ///Puntaje del producto
   final RatingModel? rating;
 
   ProductEntity({
@@ -89,7 +96,9 @@ abstract class ProductEntity {
 Este modelo hace parte del modelo del producto y representa la calificación de un producto.
 ```dart
 abstract class RatingEntity {
+  ///Puntaje promedio del producto
   final double? rate;
+  ///Cantidad de puntuaciones del producto
   final int? count;
 
   RatingEntity({
