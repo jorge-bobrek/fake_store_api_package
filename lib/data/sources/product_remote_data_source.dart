@@ -1,6 +1,6 @@
-import 'package:fake_store_package/domain/utils/category_enum.dart';
-import 'package:fake_store_package/data/models/product_model.dart';
-import 'package:fake_store_package/domain/entities/product_entity.dart';
+import 'package:fake_store_api_package/domain/utils/category_enum.dart';
+import 'package:fake_store_api_package/data/models/product_model.dart';
+import 'package:fake_store_api_package/domain/entities/product_entity.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:dartz/dartz.dart';

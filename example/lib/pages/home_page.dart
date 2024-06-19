@@ -1,6 +1,6 @@
-import 'package:fake_store_package/catalog.dart';
 import 'package:flutter/material.dart';
-import 'package:fake_store_package/domain/utils/category_enum.dart';
+import 'package:fake_store_api_package/catalog.dart';
+import 'package:fake_store_api_package/domain/utils/category_enum.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

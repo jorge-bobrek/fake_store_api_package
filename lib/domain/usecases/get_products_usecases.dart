@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:fake_store_package/domain/entities/product_entity.dart';
-import 'package:fake_store_package/domain/repositories/interfaces/product_repository.dart';
-import 'package:fake_store_package/domain/utils/category_enum.dart';
+import 'package:fake_store_api_package/domain/entities/product_entity.dart';
+import 'package:fake_store_api_package/domain/repositories/interfaces/product_repository.dart';
+import 'package:fake_store_api_package/domain/utils/category_enum.dart';
 
 /// Casos de uso para obtener los productos.
 class GetProducts {

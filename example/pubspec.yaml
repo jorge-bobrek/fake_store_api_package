@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  fake_store_package:
+  fake_store_api_package:
     path: ../
 
   cupertino_icons: ^1.0.6

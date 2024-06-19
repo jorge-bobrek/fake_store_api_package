@@ -1,8 +1,8 @@
+import 'package:fake_store_api_package/domain/utils/category_enum.dart';
+import 'package:fake_store_api_package/data/sources/product_remote_data_source.dart';
+import 'package:fake_store_api_package/domain/entities/product_entity.dart';
+import 'package:fake_store_api_package/domain/repositories/interfaces/product_repository.dart';
 import 'package:dartz/dartz.dart';
-import 'package:fake_store_package/domain/utils/category_enum.dart';
-import 'package:fake_store_package/data/sources/product_remote_data_source.dart';
-import 'package:fake_store_package/domain/entities/product_entity.dart';
-import 'package:fake_store_package/domain/repositories/interfaces/product_repository.dart';
 
 /// Implementación del repositorio [ProductRepository] que maneja la
 /// lógica de acceso a datos para los productos.

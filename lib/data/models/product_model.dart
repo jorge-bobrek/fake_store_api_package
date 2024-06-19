@@ -1,4 +1,4 @@
-import 'package:fake_store_package/domain/entities/product_entity.dart';
+import 'package:fake_store_api_package/domain/entities/product_entity.dart';
 import 'package:collection/collection.dart';
 
 import '../../domain/utils/category_enum.dart';

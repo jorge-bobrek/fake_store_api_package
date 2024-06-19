@@ -1,4 +1,4 @@
-import 'package:fake_store_package/domain/entities/rating_entity.dart';
+import 'package:fake_store_api_package/domain/entities/rating_entity.dart';
 
 /// [RatingModel] representa el modelo de datos del rating de un producto
 /// y extiende la entidad de dominio [RatingEntity].

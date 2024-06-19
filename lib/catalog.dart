@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:fake_store_package/data/repositories/product_repository_impl.dart';
-import 'package:fake_store_package/data/sources/product_remote_data_source.dart';
-import 'package:fake_store_package/domain/entities/product_entity.dart';
-import 'package:fake_store_package/domain/utils/category_enum.dart';
+import 'package:fake_store_api_package/data/repositories/product_repository_impl.dart';
+import 'package:fake_store_api_package/data/sources/product_remote_data_source.dart';
+import 'package:fake_store_api_package/domain/entities/product_entity.dart';
+import 'package:fake_store_api_package/domain/utils/category_enum.dart';
 
 /// Clase que hace uso del repositorio de productos con 3 métodos para acceder a
 /// cada uno de las implementaciones y retornar la respuesta del servicio:

@@ -1,5 +1,5 @@
-import 'package:fake_store_package/data/models/rating_model.dart';
-import 'package:fake_store_package/domain/utils/category_enum.dart';
+import 'package:fake_store_api_package/data/models/rating_model.dart';
+import 'package:fake_store_api_package/domain/utils/category_enum.dart';
 
 /// [ProductEntity] representa la entidad de dominio de un producto.
 abstract class ProductEntity {
